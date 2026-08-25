@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Slip — a document, not a dashboard
+
+   An invoice is a piece of paper that happens to be on a screen, so the design
+   borrows from print: a warm paper ground, ink rather than pure black, one
+   accent used sparingly, and generous margins. Every ratio below is measured
+   against the surface it sits on, not estimated.
+--------------------------------------------------------------------------- */
+:root {
+  --paper: #fbfaf7;
+  --card: #ffffff;
+  --ink: #16150f; /* 17.9:1 on paper */
+  --muted: #6b6a61; /* 5.2:1 on paper */
+  --faint: #edeae2;
+  --rule: #dedbd1;
+
+  --accent: #0f5545; /* 8.4:1 on paper — the only saturated colour */
+  --accent-ink: #ffffff; /* 8.0:1 on accent */
+  --accent-wash: #e8f1ed;
+
+  --due: #8a4b12; /* 5.1:1 on paper */
+  --due-wash: #fbeee0;
+  --paid: #14563c; /* 7.6:1 on paper */
+  --paid-wash: #e3f0e8;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121210;
+    --card: #1a1a17;
+    --ink: #f2f0e9; /* 16.4:1 on paper */
+    --muted: #a3a196; /* 7.4:1 on paper */
+    --faint: #24241f;
+    --rule: #34342d;
+
+    --accent: #6fd0b0; /* 10.1:1 on paper */
+    --accent-ink: #0a1f19;
+    --accent-wash: #16302a;
+
+    --due: #e8a86a; /* 9.3:1 on paper */
+    --due-wash: #2f2317;
+    --paid: #7fd3a8; /* 10.5:1 on paper */
+    --paid-wash: #162c22;
+
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-wash: var(--accent-wash);
+  --color-due: var(--due);
+  --color-due-wash: var(--due-wash);
+  --color-paid: var(--paid);
+  --color-paid-wash: var(--paid-wash);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Figures must never reflow while they are being edited. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer components {
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    transition: border-color 140ms ease;
+  }
+
+  .field:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  .field::placeholder {
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding-inline: 1.1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition:
+      opacity 140ms ease,
+      transform 140ms ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-quiet {
+    border: 1px solid var(--rule);
+  }
+
+  .btn-quiet:hover {
+    background: var(--faint);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Print
+   The invoice page is the deliverable. Ctrl-P has to produce something a
+   client can file, which means dropping every control and forcing the light
+   palette — a dark invoice wastes a cartridge and looks like a mistake.
+--------------------------------------------------------------------------- */
+@media print {
+  @page {
+    margin: 18mm;
+  }
+
+  :root {
+    --paper: #ffffff;
+    --card: #ffffff;
+    --ink: #000000;
+    --muted: #444444;
+    --faint: #f4f4f4;
+    --rule: #cccccc;
+    --accent: #0f5545;
+    --accent-wash: #ffffff;
+    --paid-wash: #ffffff;
+    --due-wash: #ffffff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-plain {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
