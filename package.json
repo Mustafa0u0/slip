@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db": "psql ${DATABASE_URL:-slip} -f db/schema.sql",
-    "test": "tsc lib/money.ts --outDir .test-build --module nodenext --target es2022 --moduleResolution nodenext --skipLibCheck && node --test tests/ && rm -rf .test-build"
+    "test": "tsc lib/money.ts --outDir .test-build --module nodenext --target es2022 --moduleResolution nodenext --skipLibCheck && node --test tests/*.test.mjs && rm -rf .test-build"
   },
   "dependencies": {
     "next": "16.3.2",
