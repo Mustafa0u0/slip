@@ -116,15 +116,15 @@ export function Builder() {
         }}
       >
         <Section title="You">
-          <Text label="Name" value={issuerName} onChange={setIssuerName} placeholder="Mustafa Yahya" required />
-          <Text label="Email" value={issuerEmail} onChange={setIssuerEmail} type="email" />
-          <Area label="Address or details" value={issuerDetails} onChange={setIssuerDetails} />
+          <Text label="Your name" value={issuerName} onChange={setIssuerName} placeholder="Mustafa Yahya" required />
+          <Text label="Your email" value={issuerEmail} onChange={setIssuerEmail} type="email" />
+          <Area label="Your address or details" value={issuerDetails} onChange={setIssuerDetails} />
         </Section>
 
         <Section title="Client">
-          <Text label="Name" value={clientName} onChange={setClientName} placeholder="Kopi Lab Sdn Bhd" required />
-          <Text label="Email" value={clientEmail} onChange={setClientEmail} type="email" />
-          <Area label="Address or details" value={clientDetails} onChange={setClientDetails} />
+          <Text label="Client name" value={clientName} onChange={setClientName} placeholder="Kopi Lab Sdn Bhd" required />
+          <Text label="Client email" value={clientEmail} onChange={setClientEmail} type="email" />
+          <Area label="Client address or details" value={clientDetails} onChange={setClientDetails} />
         </Section>
 
         <Section title="Invoice">

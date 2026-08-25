@@ -5,6 +5,16 @@ something you do six times a month.
 
 Next.js 16, Postgres, TypeScript.
 
+![The builder, with the live preview beside it](docs/builder.png)
+
+The form is on the left and the document your client will open is on the right,
+rendered from the same component, updating as you type.
+
+<p>
+  <img src="docs/invoice.png" width="420" alt="The public invoice page">
+  <img src="docs/invoice-dark.png" width="420" alt="The same invoice in dark mode">
+</p>
+
 ## Running it
 
 ```bash
