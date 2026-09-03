@@ -1,5 +1,7 @@
 # Slip
 
+[![CI](https://github.com/Mustafa0u0/slip/actions/workflows/ci.yaml/badge.svg)](https://github.com/Mustafa0u0/slip/actions/workflows/ci.yaml)
+
 Write an invoice, send a link. No account, no password, no monthly fee for
 something you do six times a month.
 
